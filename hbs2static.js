@@ -5,10 +5,11 @@ var fs   = require('fs'),
     hbs  = require('handlebars');
 
 var files = args._;
-var partialsDir = __dirname + '/html/partials';
-var outputDir = __dirname + '/html/out/';
 
-console.log('### Registering partials in', partialsDir)
+var partialsDir = __dirname + (args.p ? '/' + args.p : 'partials');
+var outputDir = __dirname + (args.o ? '/' + args.o : 'html');
+
+console.log('### Registering partials in', partialsDir);
 var filenames = fs.readdirSync(partialsDir);
 filenames.forEach(function (filename) {
     var matches = /^([^.]+).hbs$/.exec(filename);
@@ -21,7 +22,7 @@ filenames.forEach(function (filename) {
     console.log( "> partial " + filename + " was found");
 });
 
-console.log('### Compiling templates to', outputDir)
+console.log('### Compiling templates to', outputDir);
 files.forEach(function (filename) {
     fs.readFile(filename, 'utf8', function (err,data) {
         if (err) {
@@ -31,7 +32,7 @@ files.forEach(function (filename) {
 
         var outputName = filename.split('/')[1].split('.')[0]+'.html';
 
-        fs.writeFile( outputDir + outputName, template, function(err) {
+        fs.writeFile( outputDir + '/' + outputName, template, function(err) {
             if(err) {
                 return console.log(err);
             }
@@ -39,5 +40,3 @@ files.forEach(function (filename) {
         });
     });
 });
-
-

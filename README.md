@@ -2,4 +2,4 @@
 Generates static HTML from Handlebar templates
 
 ## Usage 
-`node hbs2static *.hbs`
+`node hbs2static -p html/partials -o documentation html/*.hbs`
