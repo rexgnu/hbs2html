@@ -9,6 +9,10 @@ var files = args._;
 var partialsDir = __dirname + (args.p ? '/' + args.p : 'partials');
 var outputDir = __dirname + (args.o ? '/' + args.o : 'html');
 
+if (!fs.existsSync(outputDir)){
+    fs.mkdirSync(outputDir);
+}
+
 console.log('### Registering partials in', partialsDir);
 var filenames = fs.readdirSync(partialsDir);
 filenames.forEach(function (filename) {
