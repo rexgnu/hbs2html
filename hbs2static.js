@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var fs   = require('fs'),
+    path = require('path'),
     args = require('optimist').argv,
     hbs  = require('handlebars');
 
@@ -23,7 +24,7 @@ filenames.forEach(function (filename) {
     var name = matches[1];
     var template = fs.readFileSync(partialsDir + '/' + filename, 'utf8');
     hbs.registerPartial(name, template);
-    console.log( "> partial " + filename + " was found");
+    console.log("> partial " + filename + " was found");
 });
 
 console.log('### Compiling templates to', outputDir);
@@ -34,13 +35,13 @@ files.forEach(function (filename) {
         }
         var template = hbs.compile(data)();
 
-        var outputName = filename.split('/')[1].split('.')[0]+'.html';
+        var outputName = path.basename(filename, '.hbs') + '.html';
 
-        fs.writeFile( outputDir + '/' + outputName, template, function(err) {
+        fs.writeFile(outputDir + '/' + outputName, template, function(err) {
             if(err) {
                 return console.log(err);
             }
-            console.log( "> " + outputName + " was compiled!");
+            console.log("> " + outputName + " was compiled!");
         });
     });
 });
