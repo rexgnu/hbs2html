@@ -1,14 +1,14 @@
 {
-  "name": "hbs2static",
+  "name": "hbs2html",
   "version": "1.0.0",
   "description": "Generates static HTML from Handlebar templates",
-  "main": "hbs2static.js",
+  "main": "hbs2html.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rexgnu/hbs2static.git"
+    "url": "git+https://github.com/rexgnu/hbs2html.git"
   },
   "keywords": [
     "hbs",
@@ -19,7 +19,7 @@
   "author": "Gabriel Ledung",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rexgnu/hbs2static/issues"
+    "url": "https://github.com/rexgnu/hbs2html/issues"
   },
-  "homepage": "https://github.com/rexgnu/hbs2static#readme"
+  "homepage": "https://github.com/rexgnu/hbs2html#readme"
 }
